@@ -1,0 +1,18 @@
+.todo-item > input, .todo-item > span {
+    font-size: 2em !important;
+    color: #555;
+}
+
+.no-margin {
+    margin: 0px 0px !important;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px !important;
+}
+
+input[type=checkbox]:checked + span {
+    font-style: italic;
+    text-decoration: line-through;
+    color: #ccc;
+}
