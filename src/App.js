@@ -53,6 +53,19 @@ class App extends Component {
     });
   }
 
+  allDone() {
+    const todos = this.state.todos.map(todo => {
+      return {
+        title: todo.title,
+        done: true
+      };
+    });
+
+    this.setState({
+      todos
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -63,10 +76,12 @@ class App extends Component {
           <button type="submit">Add Todo</button>
         </form>
 
+        <button onClick={() => this.allDone()}>All done</button>
+
         <ul>
           {this.state.todos.map((todo, index) => {
             return ( <li key={todo.title}>
-            <input onChange={(event) => this.toggleTodoDone(event, index)} type="checkbox" />
+            <input onChange={(event) => this.toggleTodoDone(event, index)} type="checkbox" checked={todo.done} />
             <span style={{ textDecoration: todo.done ? 'line-through' : 'inherit'}}>{todo.title}</span>
             <button onClick={() => this.removeTodo(index)}>Remove</button>
             </li> )
