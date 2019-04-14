@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import NewTodoForm from './NewTodoForm';
+import TodoList from './TodoList';
 import './App.css';
 
 class App extends Component {
@@ -7,7 +9,7 @@ class App extends Component {
     this.state = {
       message: 'ToDo App',
       newTodo: '',
-      todos: [{
+      todos: [{ // Start van de array van todo's
         title: 'Learn React',
         done: false
       }, {
@@ -17,37 +19,41 @@ class App extends Component {
     };
   }
 
-  // log de value
+  // wanneer er iets verandert update de form
   newTodoChanged(event) {
     this.setState({
       newTodo: event.target.value
     });
   }
 
-  //recente value
+  // 
   formSubmitted(event) {
     event.preventDefault();
     this.setState({
-      newTodo: '',
-      todos: [...this.state.todos, {
-        title: this.state.newTodo,
+      newTodo: '', // als je een op enter drukt krijg je een nieuwe input met niets
+      todos: [...this.state.todos, { // oude array
+        title: this.state.newTodo, // nieuwe box in de array
         done: false
       }]
     });
   }
 
   toggleTodoDone(event, index) {
-    const todos = [...this.state.todos]; //copy the array
-    todos[index] = {...todos[index]}; // copy the todo
-    todos[index].done = event.target.checked; // update done property on copied todo
+    const todos = [...this.state.todos]; //kopieert de array
+    todos[index] = {
+    ...todos[index],
+    done: event.target.checked //kopieert de todo en unchecked de nieuwe box
+    };
+
     this.setState({
       todos
     });
   }
 
   removeTodo(index) {
-    const todos = [...this.state.todos]; //copy the array
-    todos.splice(index, 1);
+    const todos = [...this.state.todos]; //kopieert de array
+    todos.splice(index, 1); // split hem en verwijdert de value
+
     this.setState({
       todos
     });
@@ -57,7 +63,7 @@ class App extends Component {
     const todos = this.state.todos.map(todo => {
       return {
         title: todo.title,
-        done: true
+        done: true //vinkt elke value in de array aan als done
       };
     });
 
@@ -66,32 +72,31 @@ class App extends Component {
     });
   }
 
-  render() {
+  render() { // rendert de hele form met aangeroepen functies
     return (
       <div className="App">
         <h1>{this.state.message}</h1> 
-        <form onSubmit={(event) => this.formSubmitted(event)}>
-          <label htmlFor="newTodo">New Todo</label>
-          <input onChange={(event) => this.newTodoChanged(event)} id="newTodo" name="newTodo" value={this.state.newTodo}/>
-          <button type="submit">Add Todo</button>
-        </form>
+
+        <NewTodoForm //roept de form aan via een andere file
+        formSubmitted={this.formSubmitted.bind(this)} // vergelijkt de props
+        newTodoChanged={this.newTodoChanged.bind(this)}
+        newTodo={this.state.newTodo}  
+        />
 
         <button onClick={() => this.allDone()}>All done</button>
 
-        <ul>
-          {this.state.todos.map((todo, index) => {
-            return ( <li key={todo.title}>
-            <input onChange={(event) => this.toggleTodoDone(event, index)} type="checkbox" checked={todo.done} />
-            <span style={{ textDecoration: todo.done ? 'line-through' : 'inherit'}}>{todo.title}</span>
-            <button onClick={() => this.removeTodo(index)}>Remove</button>
-            </li> )
-          })}
-        </ul>
+        <TodoList // roeps de todolist aan via andere file
+        todos={this.state.todos} // vergelijkt de props
+        toggleTodoDone={this.toggleTodoDone.bind(this)}
+        removeTodo={this.removeTodo.bind(this)}
+        />
 
       </div>
     );
   }
 }
-// 27:04
 
 export default App;
+
+// https://www.youtube.com/watch?v=vIA130MePY8
+// Deze tutorial heb ik gevolgd
