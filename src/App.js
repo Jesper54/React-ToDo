@@ -10,10 +10,7 @@ class App extends Component {
       message: 'ToDo App',
       newTodo: '',
       todos: [{ // Start van de array van todo's
-        title: 'Learn React',
-        done: false
-      }, {
-        title: 'Learn Html',
+        title: 'Dit is een voorbeeld',
         done: false
       }]
     };
@@ -76,6 +73,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{this.state.message}</h1> 
+        <p>Gemaakt door Jesper Bralten</p>
 
         <NewTodoForm //roept de form aan via een andere file
         formSubmitted={this.formSubmitted.bind(this)} // vergelijkt de props
@@ -83,7 +81,7 @@ class App extends Component {
         newTodo={this.state.newTodo}  
         />
 
-        <button onClick={() => this.allDone()}>All done</button>
+        <button className="btn btn-success btn-done" onClick={() => this.allDone()}>All Done</button>
 
         <TodoList // roeps de todolist aan via andere file
         todos={this.state.todos} // vergelijkt de props

@@ -1,20 +1,42 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgb(0, 162, 255);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 input[type="checkbox"] {
   display: inline;
   width: auto;
+}
+
+.btn-done{
+  width: 100px;
+  margin-bottom: 10px;
+}
+.btn-add{
+  width: 100px;
+  float:left;
+  margin-right: 5px;
+}
+.btn-remove {
+  width: 100px;
+  margin-left: 100px;
+}
+.TodoInput {
+  width: 75%;
+}
+.TodoText {
+  margin-top: 20px;
+}
+.TodoItem {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.TodoCheckbox {
+  margin-right: 5px;
+}
+.SingleTodoItem {
+  margin-top: 5px;
 }
