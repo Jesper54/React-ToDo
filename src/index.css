@@ -34,6 +34,11 @@ input[type="checkbox"] {
   margin-top: 10px;
   padding-top: 10px;
 }
+.TodoItem:hover {
+  color:red;
+  text-decoration: line-through !important;
+}
+
 .TodoCheckbox {
   margin-right: 5px;
 }

@@ -25,6 +25,11 @@ class App extends Component {
 
   // 
   formSubmitted(event) {
+    // if statement maken of hij empty is
+    //const InputValue = this.props.newTodo;
+    if(this.state.newTodo.trim() === "") {
+
+    }else{
     event.preventDefault();
     this.setState({
       newTodo: '', // als je een op enter drukt krijg je een nieuwe input met niets
@@ -34,6 +39,7 @@ class App extends Component {
       }]
     });
   }
+}
 
   toggleTodoDone(event, index) {
     const todos = [...this.state.todos]; //kopieert de array
