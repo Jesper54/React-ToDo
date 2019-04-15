@@ -26,7 +26,6 @@ class App extends Component {
   // 
   formSubmitted(event) {
     // if statement maken of hij empty is
-    //const InputValue = this.props.newTodo;
     if(this.state.newTodo.trim() === "") {
       return(<div><p>Je moet iets invoeren</p></div>);
     }else{
