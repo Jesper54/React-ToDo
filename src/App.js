@@ -28,7 +28,7 @@ class App extends Component {
     // if statement maken of hij empty is
     //const InputValue = this.props.newTodo;
     if(this.state.newTodo.trim() === "") {
-
+      return(<div><p>Je moet iets invoeren</p></div>);
     }else{
     event.preventDefault();
     this.setState({
