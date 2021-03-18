@@ -9,5 +9,6 @@ Je kan items verwijderen <br>
 Je kan items aanvinken <br>
 Je kan alle items aanvinken
 
+npm start
 
 Gemaakt door Jesper Bralten
